@@ -1,0 +1,83 @@
+<form novalid #userForm="ngForm">
+  <div class="formContent">
+    <!--name-->
+    <label for="name">{{"Name"| translate}}</label>
+    <input
+      name="Name"
+      id="Name"
+      #name="ngModel"
+      [(ngModel)]="user.name"
+      type="text"
+      required
+    />
+    <div *ngIf="(name.invalid && (name.touched || name.dirty)) || isSubmited">
+      <span *ngIf="name.errors?.['required']">{{"RequiredField" | translate}}</span>
+    </div>
+
+    <!--lastName-->
+    <label for="lastName">{{"LastName"| translate}}</label>
+    <input
+      name="lastName"
+      id="LastName"
+      #lastName="ngModel"
+      [(ngModel)]="user.lastName"
+      type="text"
+      minlength="3"
+      required
+    />
+    <div
+      *ngIf="
+        (lastName.invalid && (lastName.touched || lastName.dirty)) || isSubmited
+      "
+    >
+      <span *ngIf="lastName.errors?.['required']">{{"RequiredField" | translate}}</span>
+      <span *ngIf="lastName.errors?.['minlength']"
+        >{{"NeedChar3" | translate}}</span
+      >
+    </div>
+
+    <!--email-->
+    <label for="email">{{"Email" | translate}}</label>
+    <input
+      name="email"
+      id="email"
+      #email="ngModel"
+      [(ngModel)]="user.email"
+      type="email"
+      required
+    />
+    <div
+      *ngIf="(email.invalid && (email.touched || email.dirty)) || isSubmited"
+    >
+      <span *ngIf="email.errors?.['required']">{{"RequiredField" | translate}}</span>
+    </div>
+
+    <!--password-->
+    <label for="password">{{"Password" | translate}}</label>
+    <input
+      value="password"
+      id="password"
+      name="passowrd"
+      #password="ngModel"
+      [(ngModel)]="user.password"
+      type="password"
+      minlength="6"
+      required
+    />
+    <div
+      *ngIf="
+        (password.invalid && (password.touched || password.dirty)) || isSubmited
+      "
+    >
+      <span *ngIf="password.errors?.['required']">{{"RequiredField" | translate}}</span>
+      <span *ngIf="password.errors?.['minlength']"
+        >{{"NeedChar6" | translate}}</span
+      >
+    </div>
+    <div>
+      <button (click)="onSubmit(userForm)" type="button">
+        {{"Create"| translate}}
+      </button>
+    </div>
+  </div>
+</form>

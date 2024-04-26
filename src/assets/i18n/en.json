@@ -1,0 +1,15 @@
+{
+    "Reactive": "Reactive",
+    "Template": "Template",
+    "Name": "Name",
+    "LastName": "LastName",
+    "Email": "Email",
+    "Password": "Password",
+    "Create": "Create Template",
+    "CreateR": "Create Reactive",
+    "RequiredField": "This Field Is Required",
+    "NeedChar3":"This Field Need 3 Character",
+    "NeedChar6":"This Field Need 6 Character",
+    "EmailValid":"Email Is Not Valid"
+
+}

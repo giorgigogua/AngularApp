@@ -1,0 +1,104 @@
+<form [formGroup]="userForm">
+  <div class="formContent">
+    <!--name-->
+    <label for="Name">{{ "Name" | translate }}</label>
+    <input
+      id="Name"
+      placeholder="Name"
+      type="text"
+      formControlName="name"
+      required
+    />
+    <div
+      *ngIf="
+        userForm.controls['name'].invalid &&
+        (isSubmit ||
+          userForm.controls['name'].touched ||
+          userForm.controls['name'].dirty)
+      "
+    >
+      <span *ngIf="userForm.controls['name'].errors?.['required']">{{
+        "RequiredField" | translate
+      }}</span>
+    </div>
+
+    <!--lastname-->
+    <label for="lastName">{{ "LastName" | translate }}</label>
+    <input
+      placeholder="LastName"
+      id="LastName"
+      type="text"
+      formControlName="lastName"
+      required
+    />
+    <div
+      *ngIf="
+        userForm.controls['lastName'].invalid &&
+        (isSubmit ||
+          userForm.controls['lastName'].touched ||
+          userForm.controls['lastName'].dirty)
+      "
+    >
+      <span *ngIf="userForm.controls['lastName'].errors?.['required']">{{
+        "RequiredField" | translate
+      }}</span>
+      <span *ngIf="userForm.controls['lastName'].errors?.['minlength']">{{
+        "NeedChar3" | translate
+      }}</span>
+    </div>
+
+    <!--email-->
+    <label for="Email">{{ "Email" | translate }}</label>
+    <input
+      id="Email"
+      placeholder="E-Mail"
+      formControlName="email"
+      type="email"
+      required
+    />
+    <div
+      *ngIf="
+        userForm.controls['email'].invalid &&
+        (isSubmit ||
+          userForm.controls['email'].touched ||
+          userForm.controls['email'].dirty)
+      "
+    >
+      <span *ngIf="userForm.controls['email'].errors?.['required']">{{
+        "RequiredField" | translate
+      }}</span>
+      <span *ngIf="userForm.controls['email'].errors?.['email']">{{
+        "EmailValid" | translate
+      }}</span>
+    </div>
+
+    <!--password-->
+    <label for="Password">{{ "Password" | translate }}</label>
+    <input
+      id="Password"
+      placeholder="Password"
+      formControlName="password"
+      type="password"
+      required
+    />
+    <div
+      *ngIf="
+        userForm.controls['password'].invalid &&
+        (isSubmit ||
+          userForm.controls['password'].touched ||
+          userForm.controls['password'].dirty)
+      "
+    >
+      <span *ngIf="userForm.controls['password'].errors?.['required']">{{
+        "RequiredField" | translate
+      }}</span>
+      <span *ngIf="userForm.controls['password'].errors?.['minlength']">{{
+        "NeedChar6" | translate
+      }}</span>
+    </div>
+
+    <div>
+      <button (click)="onSubmit()">{{ "CreateR" | translate }}</button>
+    </div>
+  </div>
+</form>
